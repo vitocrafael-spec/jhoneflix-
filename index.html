@@ -1,36 +1,288 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JHONEFLIX - Assinatura Emby</title>
-    <style>
-        body { background-color: #141414; color: #fff; font-family: Arial, sans-serif; text-align: center; padding: 50px; }
-        .container { max-width: 400px; margin: 0 auto; background: #1f1f1f; padding: 30px; border-radius: 8px; }
-        button { background: #e50914; color: white; border: none; padding: 15px 20px; font-size: 16px; cursor: pointer; border-radius: 4px; width: 100%; margin-top: 20px; }
-        button:hover { background: #b20710; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>JHONEFLIX</h1>
-        <p>Acesso completo ao Emby por 30 dias</p>
-        <h2>R$ 20,00</h2>
-        <input type="text" id="username" placeholder="Escolha seu usuário do Emby" style="width: 100%; padding: 10px; margin-top: 15px; box-sizing: border-box;">
-        <input type="email" id="email" placeholder="Seu e-mail" style="width: 100%; padding: 10px; margin-top: 10px; box-sizing: border-box;">
-        <button onclick="gerarPix()">Pagar com Pix</button>
-    </div>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#100b1c">
+  <title>JHONEFLIX | Sua diversão começa aqui</title>
 
-    <script>
-        function gerarPix() {
-            const username = document.getElementById('username').value;
-            const email = document.getElementById('email').value;
-            if(!username || !email) {
-                alert('Preencha todos os campos!');
-                return;
-            }
-            alert('Integração com gateway de pagamento necessária para gerar o Pix.');
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: #f8f5ff;
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(ellipse at top, #302044 0%, transparent 48%),
+        #0c0912;
+    }
+
+    header {
+      padding: 22px 15px;
+      text-align: center;
+      border-bottom: 1px solid #39274e;
+      background: rgba(12, 9, 18, .8);
+    }
+
+    .logo {
+      width: 85px;
+      height: 85px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 10px;
+    }
+
+    .brand {
+      margin: 0;
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .brand span { color: #b794ff; }
+
+    .subtitle {
+      color: #b9afc9;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    main {
+      width: min(92%, 460px);
+      margin: 38px auto;
+    }
+
+    .intro { text-align: center; }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 13px;
+      border: 1px solid #5c407e;
+      border-radius: 30px;
+      color: #d4bdff;
+      background: #21152f;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      font-size: 34px;
+      line-height: 1.15;
+      margin: 18px 0 10px;
+    }
+
+    .intro p {
+      color: #b9afc9;
+      line-height: 1.6;
+    }
+
+    .card {
+      margin-top: 25px;
+      padding: 27px;
+      border: 1px solid #49345f;
+      border-radius: 20px;
+      background: #191222;
+      box-shadow: 0 18px 50px #0006;
+    }
+
+    .plan {
+      color: #c4a7ff;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .price {
+      margin: 10px 0 5px;
+      font-size: 40px;
+      font-weight: 900;
+    }
+
+    .price small {
+      color: #b9afc9;
+      font-size: 14px;
+      font-weight: normal;
+    }
+
+    .note {
+      color: #b9afc9;
+      font-size: 13px;
+    }
+
+    ul {
+      padding: 0;
+      margin: 23px 0;
+      list-style: none;
+    }
+
+    li {
+      margin: 13px 0;
+      color: #e8e0f5;
+      font-size: 14px;
+    }
+
+    li span {
+      margin-right: 9px;
+      color: #c4a7ff;
+    }
+
+    label {
+      display: block;
+      margin: 16px 0 8px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #49345f;
+      border-radius: 10px;
+      outline: none;
+      background: #100c18;
+      color: white;
+      font-size: 15px;
+    }
+
+    input:focus {
+      border-color: #a879ff;
+      box-shadow: 0 0 0 3px #8b5cf633;
+    }
+
+    input::placeholder { color: #81758f; }
+
+    button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 16px;
+      border: 0;
+      border-radius: 11px;
+      background: linear-gradient(100deg, #7c3aed, #a879ff);
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover { filter: brightness(1.1); }
+
+    #message {
+      display: none;
+      margin-top: 15px;
+      padding: 13px;
+      border: 1px solid #49345f;
+      border-radius: 10px;
+      color: #d4bdff;
+      background: #21152f;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .security {
+      color: #a99bb9;
+      font-size: 11px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    footer {
+      padding: 20px;
+      color: #81758f;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 480px) {
+      .card { padding: 22px 18px; }
+      h1 { font-size: 29px; }
+      .price { font-size: 35px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <!-- Coloque seu logo na pasta do site com o nome logo.png -->
+    <img class="logo" src="logo.png" alt="Logo JHONEFLIX"
+         onerror="this.style.display='none'">
+
+    <p class="brand">JHONE<span>FLIX</span></p>
+    <div class="subtitle">SEU ENTRETENIMENTO</div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <span class="tag">SUA PRÓXIMA SESSÃO COMEÇA AQUI</span>
+      <h1>Entre no universo<br>JHONEFLIX</h1>
+      <p>Preencha seus dados para solicitar sua assinatura de acesso ao Emby.</p>
+    </section>
+
+    <section class="card">
+      <div class="plan">PLANO MENSAL</div>
+      <div class="price">R$ 20,00 <small>/ 30 dias</small></div>
+      <p class="note">Acesso por 30 dias após a confirmação do pagamento.</p>
+
+      <ul>
+        <li><span>✓</span> Assinatura de 30 dias</li>
+        <li><span>✓</span> Cadastro de usuário desejado</li>
+        <li><span>✓</span> Ativação após confirmação do pagamento</li>
+      </ul>
+
+      <form id="subscriptionForm">
+        <label for="username">Usuário desejado no Emby</label>
+        <input id="username" type="text"
+               placeholder="Digite seu usuário"
+               maxlength="60" required>
+
+        <label for="email">Seu e-mail</label>
+        <input id="email" type="email"
+               placeholder="voce@exemplo.com"
+               maxlength="150" required>
+
+        <button type="submit">Continuar para pagamento Pix</button>
+      </form>
+
+      <div id="message" role="status"></div>
+
+      <p class="security">
+        🔒 A cobrança Pix ainda precisa ser conectada a um serviço de pagamento seguro.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> JHONEFLIX · Todos os direitos reservados.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent =
+      new Date().getFullYear();
+
+    document.getElementById('subscriptionForm').addEventListener(
+      'submit', function(event) {
+        event.preventDefault();
+
+        const username =
+          document.getElementById('username').value.trim();
+        const email =
+          document.getElementById('email').value.trim();
+        const message =
+          document.getElementById('message');
+
+        if (!username || !email) {
+          message.textContent = 'Preencha todos os campos.';
+        } else {
+          message.textContent =
+            'Dados preenchidos! A geração do Pix real ainda precisa ser integrada. Nenhuma cobrança foi criada.';
         }
-    </script>
+
+        message.style.display = 'block';
+      }
+    );
+  </script>
 </body>
 </html>
+```
