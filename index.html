@@ -3,122 +3,219 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>JHONEFLIX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JHONEFLIX | Entrar</title>
+
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 24px;
-      font-family: Arial, sans-serif;
-      color: white;
-      background: linear-gradient(135deg, #10091c, #32104e, #1a0d2b);
+      font-family: Arial, Helvetica, sans-serif;
+      color: #fff;
+      background:
+        radial-gradient(ellipse at top, #351014 0%, transparent 48%),
+        #080808;
     }
+
+    .container {
+      width: 100%;
+      max-width: 390px;
+      text-align: center;
+    }
+
     .logo {
+      display: block;
       width: 190px;
       max-width: 80%;
+      max-height: 140px;
       object-fit: contain;
-      margin-bottom: 24px;
+      margin: 0 auto 16px;
     }
-    .card {
-      width: 100%;
-      max-width: 370px;
-      padding: 28px;
-      border: 1px solid #7542a1;
-      border-radius: 18px;
-      background: rgba(17, 10, 29, .94);
-      box-shadow: 0 12px 40px #0006;
+
+    .brand {
+      margin: 0;
+      color: #ed1c2e;
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      text-shadow: 0 0 20px #9e101c55;
     }
-    h1 { text-align: center; color: #d6a5ff; }
-    p { text-align: center; color: #d5c9e3; }
-    input, button {
+
+    .subtitle {
+      margin: 10px 0 28px;
+      color: #aaa;
+      font-size: 11px;
+      letter-spacing: 3px;
+    }
+
+    .login-box {
+      padding: 28px 24px;
+      background: #111;
+      border: 1px solid #292929;
+      border-top: 3px solid #ed1c2e;
+      border-radius: 12px;
+      box-shadow: 0 15px 45px #0009;
+      text-align: left;
+    }
+
+    h2 {
+      margin: 0 0 24px;
+      text-align: center;
+      font-size: 22px;
+      letter-spacing: 2px;
+    }
+
+    label {
+      display: block;
+      margin: 16px 0 8px;
+      color: #ddd;
+      font-size: 13px;
+    }
+
+    input {
       width: 100%;
-      padding: 13px;
-      margin-top: 12px;
-      border-radius: 9px;
+      padding: 14px;
+      color: white;
+      background: #1b1b1b;
+      border: 1px solid #393939;
+      border-radius: 7px;
+      outline: none;
       font-size: 16px;
     }
-    input {
-      color: white;
-      background: #21152e;
-      border: 1px solid #674483;
+
+    input:focus {
+      border-color: #ed1c2e;
+      box-shadow: 0 0 0 2px #ed1c2e22;
     }
+
     button {
-      border: 0;
+      width: 100%;
+      margin-top: 24px;
+      padding: 15px;
       color: white;
-      background: #813bd0;
+      background: #d71927;
+      border: none;
+      border-radius: 7px;
+      font-size: 15px;
       font-weight: bold;
+      letter-spacing: 1px;
       cursor: pointer;
+      transition: background 0.2s;
     }
-    button:disabled { opacity: .6; cursor: wait; }
-    #mensagem { min-height: 24px; overflow-wrap: anywhere; }
+
+    button:hover {
+      background: #f02b3a;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+
+    #mensagem {
+      min-height: 20px;
+      margin: 18px 0 0;
+      text-align: center;
+      font-size: 14px;
+      overflow-wrap: anywhere;
+    }
+
+    .rodape {
+      margin-top: 24px;
+      color: #666;
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
   </style>
 </head>
+
 <body>
-  <img class="logo" src="logo.png" alt="JHONEFLIX">
+  <main class="container">
+    <img
+      class="logo"
+      src="logo.png"
+      alt="Logo JHONEFLIX"
+      onerror="this.style.display='none'"
+    >
 
-  <main class="card">
-    <h1>JHONEFLIX</h1>
-    <p>Entre com sua conta Emby</p>
+    <h1 class="brand">JHONEFLIX</h1>
+    <p class="subtitle">SEU MUNDO DE FILMES E SÉRIES</p>
 
-    <form id="formLogin">
+    <form class="login-box" id="formLogin">
+      <h2>ENTRAR</h2>
+
+      <label for="username">Usuário do Emby</label>
       <input
         id="username"
         name="username"
-        placeholder="Usuário Emby"
+        type="text"
+        placeholder="Digite seu usuário"
         autocomplete="username"
         required
-        maxlength="100"
       >
+
+      <label for="password">Senha</label>
       <input
         id="password"
         name="password"
         type="password"
-        placeholder="Senha Emby"
+        placeholder="Digite sua senha"
         autocomplete="current-password"
         required
-        maxlength="200"
       >
-      <button id="entrar" type="submit">Entrar</button>
+
+      <button id="botaoEntrar" type="submit">ENTRAR</button>
+
+      <p id="mensagem" role="status" aria-live="polite"></p>
     </form>
 
-    <p id="mensagem" role="status" aria-live="polite"></p>
+    <p class="rodape">JHONEFLIX • FILMES E SÉRIES</p>
   </main>
 
   <script>
     const form = document.getElementById("formLogin");
     const mensagem = document.getElementById("mensagem");
-    const botao = document.getElementById("entrar");
+    const botao = document.getElementById("botaoEntrar");
 
     form.addEventListener("submit", async (evento) => {
       evento.preventDefault();
-      botao.disabled = true;
+
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+
       mensagem.textContent = "Verificando login...";
+      mensagem.style.color = "#cccccc";
+      botao.disabled = true;
 
       try {
         const resposta = await fetch("/api/login", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            username: document.getElementById("username").value,
-            password: document.getElementById("password").value
-          })
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ username, password })
         });
 
         const dados = await resposta.json();
-        mensagem.textContent = dados.mensagem ||
-          "Não foi possível concluir o login.";
 
-        if (dados.autenticado) {
-          form.reset();
+        if (!resposta.ok) {
+          throw new Error(dados.mensagem || "Não foi possível entrar.");
         }
-      } catch {
-        mensagem.textContent = "Não foi possível acessar o servidor.";
+
+        mensagem.textContent = "Login aprovado! Bem-vindo, " + dados.usuario + ".";
+        mensagem.style.color = "#48df83";
+      } catch (erro) {
+        mensagem.textContent =
+          erro.message || "Erro ao conectar ao servidor.";
+        mensagem.style.color = "#ff4b55";
       } finally {
         botao.disabled = false;
       }
