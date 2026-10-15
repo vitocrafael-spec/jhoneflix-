@@ -1,36 +1,87 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JHONEFLIX - Assinatura Emby</title>
-    <style>
-        body { background-color: #141414; color: #fff; font-family: Arial, sans-serif; text-align: center; padding: 50px; }
-        .container { max-width: 400px; margin: 0 auto; background: #1f1f1f; padding: 30px; border-radius: 8px; }
-        button { background: #e50914; color: white; border: none; padding: 15px 20px; font-size: 16px; cursor: pointer; border-radius: 4px; width: 100%; margin-top: 20px; }
-        button:hover { background: #b20710; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>JHONEFLIX</h1>
-        <p>Acesso completo ao Emby por 30 dias</p>
-        <h2>R$ 20,00</h2>
-        <input type="text" id="username" placeholder="Escolha seu usuário do Emby" style="width: 100%; padding: 10px; margin-top: 15px; box-sizing: border-box;">
-        <input type="email" id="email" placeholder="Seu e-mail" style="width: 100%; padding: 10px; margin-top: 10px; box-sizing: border-box;">
-        <button onclick="gerarPix()">Pagar com Pix</button>
-    </div>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10091b">
+  <title>JHONEFLIX | Sua diversão começa aqui</title>
 
-    <script>
-        function gerarPix() {
-            const username = document.getElementById('username').value;
-            const email = document.getElementById('email').value;
-            if(!username || !email) {
-                alert('Preencha todos os campos!');
-                return;
-            }
-            alert('Integração com gateway de pagamento necessária para gerar o Pix.');
-        }
-    </script>
-</body>
-</html>
+  <style>
+    :root {
+      --purple: #8b35e8;
+      --purple-light: #c9a7f5;
+      --background: #10091b;
+      --card: #1b1129;
+      --text: #ffffff;
+      --muted: #c6b9d5;
+      --border: rgba(201, 167, 245, .2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at top, #392052 0%, transparent 48%),
+        linear-gradient(145deg, #10091b, #20112f 55%, #10091b);
+    }
+
+    header {
+      width: 100%;
+      padding: 22px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(12, 7, 20, .65);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand img {
+      width: 62px;
+      height: 62px;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    .brand-name {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .brand-name span {
+      color: var(--purple-light);
+    }
+
+    .header-tag {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    main {
+      width: min(1050px, 92%);
+      margin: 55px auto;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 8px
