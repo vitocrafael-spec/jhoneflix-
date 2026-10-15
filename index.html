@@ -1,288 +1,128 @@
-```html
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#100b1c">
-  <title>JHONEFLIX | Sua diversão começa aqui</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JHONEFLIX</title>
   <style>
     * { box-sizing: border-box; }
-
     body {
       margin: 0;
       min-height: 100vh;
-      color: #f8f5ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
       font-family: Arial, sans-serif;
-      background:
-        radial-gradient(ellipse at top, #302044 0%, transparent 48%),
-        #0c0912;
+      color: white;
+      background: linear-gradient(135deg, #10091c, #32104e, #1a0d2b);
     }
-
-    header {
-      padding: 22px 15px;
-      text-align: center;
-      border-bottom: 1px solid #39274e;
-      background: rgba(12, 9, 18, .8);
-    }
-
     .logo {
-      width: 85px;
-      height: 85px;
+      width: 190px;
+      max-width: 80%;
       object-fit: contain;
-      display: block;
-      margin: 0 auto 10px;
+      margin-bottom: 24px;
     }
-
-    .brand {
-      margin: 0;
-      font-size: 32px;
-      font-weight: 900;
-      letter-spacing: 2px;
-    }
-
-    .brand span { color: #b794ff; }
-
-    .subtitle {
-      color: #b9afc9;
-      font-size: 12px;
-      letter-spacing: 2px;
-    }
-
-    main {
-      width: min(92%, 460px);
-      margin: 38px auto;
-    }
-
-    .intro { text-align: center; }
-
-    .tag {
-      display: inline-block;
-      padding: 8px 13px;
-      border: 1px solid #5c407e;
-      border-radius: 30px;
-      color: #d4bdff;
-      background: #21152f;
-      font-size: 11px;
-      letter-spacing: 1px;
-    }
-
-    h1 {
-      font-size: 34px;
-      line-height: 1.15;
-      margin: 18px 0 10px;
-    }
-
-    .intro p {
-      color: #b9afc9;
-      line-height: 1.6;
-    }
-
     .card {
-      margin-top: 25px;
-      padding: 27px;
-      border: 1px solid #49345f;
-      border-radius: 20px;
-      background: #191222;
-      box-shadow: 0 18px 50px #0006;
+      width: 100%;
+      max-width: 370px;
+      padding: 28px;
+      border: 1px solid #7542a1;
+      border-radius: 18px;
+      background: rgba(17, 10, 29, .94);
+      box-shadow: 0 12px 40px #0006;
     }
-
-    .plan {
-      color: #c4a7ff;
-      font-size: 12px;
-      font-weight: bold;
-      letter-spacing: 2px;
+    h1 { text-align: center; color: #d6a5ff; }
+    p { text-align: center; color: #d5c9e3; }
+    input, button {
+      width: 100%;
+      padding: 13px;
+      margin-top: 12px;
+      border-radius: 9px;
+      font-size: 16px;
     }
-
-    .price {
-      margin: 10px 0 5px;
-      font-size: 40px;
-      font-weight: 900;
-    }
-
-    .price small {
-      color: #b9afc9;
-      font-size: 14px;
-      font-weight: normal;
-    }
-
-    .note {
-      color: #b9afc9;
-      font-size: 13px;
-    }
-
-    ul {
-      padding: 0;
-      margin: 23px 0;
-      list-style: none;
-    }
-
-    li {
-      margin: 13px 0;
-      color: #e8e0f5;
-      font-size: 14px;
-    }
-
-    li span {
-      margin-right: 9px;
-      color: #c4a7ff;
-    }
-
-    label {
-      display: block;
-      margin: 16px 0 8px;
-      font-size: 13px;
-      font-weight: bold;
-    }
-
     input {
-      width: 100%;
-      padding: 14px;
-      border: 1px solid #49345f;
-      border-radius: 10px;
-      outline: none;
-      background: #100c18;
       color: white;
-      font-size: 15px;
+      background: #21152e;
+      border: 1px solid #674483;
     }
-
-    input:focus {
-      border-color: #a879ff;
-      box-shadow: 0 0 0 3px #8b5cf633;
-    }
-
-    input::placeholder { color: #81758f; }
-
     button {
-      width: 100%;
-      margin-top: 22px;
-      padding: 16px;
       border: 0;
-      border-radius: 11px;
-      background: linear-gradient(100deg, #7c3aed, #a879ff);
       color: white;
-      font-size: 15px;
+      background: #813bd0;
       font-weight: bold;
       cursor: pointer;
     }
-
-    button:hover { filter: brightness(1.1); }
-
-    #message {
-      display: none;
-      margin-top: 15px;
-      padding: 13px;
-      border: 1px solid #49345f;
-      border-radius: 10px;
-      color: #d4bdff;
-      background: #21152f;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .security {
-      color: #a99bb9;
-      font-size: 11px;
-      line-height: 1.6;
-      text-align: center;
-    }
-
-    footer {
-      padding: 20px;
-      color: #81758f;
-      font-size: 12px;
-      text-align: center;
-    }
-
-    @media (max-width: 480px) {
-      .card { padding: 22px 18px; }
-      h1 { font-size: 29px; }
-      .price { font-size: 35px; }
-    }
+    button:disabled { opacity: .6; cursor: wait; }
+    #mensagem { min-height: 24px; overflow-wrap: anywhere; }
   </style>
 </head>
-
 <body>
-  <header>
-    <!-- Coloque seu logo na pasta do site com o nome logo.png -->
-    <img class="logo" src="logo.png" alt="Logo JHONEFLIX"
-         onerror="this.style.display='none'">
+  <img class="logo" src="logo.png" alt="JHONEFLIX">
 
-    <p class="brand">JHONE<span>FLIX</span></p>
-    <div class="subtitle">SEU ENTRETENIMENTO</div>
-  </header>
+  <main class="card">
+    <h1>JHONEFLIX</h1>
+    <p>Entre com sua conta Emby</p>
 
-  <main>
-    <section class="intro">
-      <span class="tag">SUA PRÓXIMA SESSÃO COMEÇA AQUI</span>
-      <h1>Entre no universo<br>JHONEFLIX</h1>
-      <p>Preencha seus dados para solicitar sua assinatura de acesso ao Emby.</p>
-    </section>
+    <form id="formLogin">
+      <input
+        id="username"
+        name="username"
+        placeholder="Usuário Emby"
+        autocomplete="username"
+        required
+        maxlength="100"
+      >
+      <input
+        id="password"
+        name="password"
+        type="password"
+        placeholder="Senha Emby"
+        autocomplete="current-password"
+        required
+        maxlength="200"
+      >
+      <button id="entrar" type="submit">Entrar</button>
+    </form>
 
-    <section class="card">
-      <div class="plan">PLANO MENSAL</div>
-      <div class="price">R$ 20,00 <small>/ 30 dias</small></div>
-      <p class="note">Acesso por 30 dias após a confirmação do pagamento.</p>
-
-      <ul>
-        <li><span>✓</span> Assinatura de 30 dias</li>
-        <li><span>✓</span> Cadastro de usuário desejado</li>
-        <li><span>✓</span> Ativação após confirmação do pagamento</li>
-      </ul>
-
-      <form id="subscriptionForm">
-        <label for="username">Usuário desejado no Emby</label>
-        <input id="username" type="text"
-               placeholder="Digite seu usuário"
-               maxlength="60" required>
-
-        <label for="email">Seu e-mail</label>
-        <input id="email" type="email"
-               placeholder="voce@exemplo.com"
-               maxlength="150" required>
-
-        <button type="submit">Continuar para pagamento Pix</button>
-      </form>
-
-      <div id="message" role="status"></div>
-
-      <p class="security">
-        🔒 A cobrança Pix ainda precisa ser conectada a um serviço de pagamento seguro.
-      </p>
-    </section>
+    <p id="mensagem" role="status" aria-live="polite"></p>
   </main>
 
-  <footer>
-    © <span id="year"></span> JHONEFLIX · Todos os direitos reservados.
-  </footer>
-
   <script>
-    document.getElementById('year').textContent =
-      new Date().getFullYear();
+    const form = document.getElementById("formLogin");
+    const mensagem = document.getElementById("mensagem");
+    const botao = document.getElementById("entrar");
 
-    document.getElementById('subscriptionForm').addEventListener(
-      'submit', function(event) {
-        event.preventDefault();
+    form.addEventListener("submit", async (evento) => {
+      evento.preventDefault();
+      botao.disabled = true;
+      mensagem.textContent = "Verificando login...";
 
-        const username =
-          document.getElementById('username').value.trim();
-        const email =
-          document.getElementById('email').value.trim();
-        const message =
-          document.getElementById('message');
+      try {
+        const resposta = await fetch("/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            username: document.getElementById("username").value,
+            password: document.getElementById("password").value
+          })
+        });
 
-        if (!username || !email) {
-          message.textContent = 'Preencha todos os campos.';
-        } else {
-          message.textContent =
-            'Dados preenchidos! A geração do Pix real ainda precisa ser integrada. Nenhuma cobrança foi criada.';
+        const dados = await resposta.json();
+        mensagem.textContent = dados.mensagem ||
+          "Não foi possível concluir o login.";
+
+        if (dados.autenticado) {
+          form.reset();
         }
-
-        message.style.display = 'block';
+      } catch {
+        mensagem.textContent = "Não foi possível acessar o servidor.";
+      } finally {
+        botao.disabled = false;
       }
-    );
+    });
   </script>
 </body>
 </html>
-```
