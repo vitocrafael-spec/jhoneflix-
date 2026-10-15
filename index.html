@@ -1,0 +1,347 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090909">
+  <title>JHONEFLIX</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #090909;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      padding: 25px 15px;
+      border-bottom: 1px solid #292929;
+      background: #050505;
+    }
+
+    .logo {
+      display: block;
+      max-width: 230px;
+      max-height: 100px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      margin: 0 auto 12px;
+    }
+
+    .brand {
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      color: #e50914;
+    }
+
+    main {
+      width: min(92%, 950px);
+      margin: 45px auto;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 6vw, 48px);
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      color: #e50914;
+    }
+
+    .hero p {
+      color: #bdbdbd;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .card {
+      background: #151515;
+      border: 1px solid #303030;
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .card h2 {
+      font-size: 23px;
+      margin-bottom: 18px;
+    }
+
+    .price {
+      color: #e50914;
+      font-size: 46px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .period {
+      color: #aaa;
+      margin-bottom: 25px;
+    }
+
+    .features {
+      list-style: none;
+      line-height: 2.2;
+      color: #ddd;
+    }
+
+    .features li::before {
+      content: "✓ ";
+      color: #e50914;
+      font-weight: bold;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      color: #ddd;
+      margin: 17px 0 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid #414141;
+      background: #090909;
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #e50914;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      margin-top: 22px;
+      border: none;
+      border-radius: 8px;
+      background: #e50914;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: #b80710;
+    }
+
+    button:disabled {
+      opacity: 0.65;
+      cursor: wait;
+    }
+
+    #mensagem {
+      display: none;
+      margin-top: 16px;
+      padding: 13px;
+      border-radius: 8px;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+      background: #242424;
+      color: #fff;
+    }
+
+    .notice {
+      color: #999;
+      font-size: 12px;
+      line-height: 1.6;
+      margin-top: 18px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      color: #777;
+      border-top: 1px solid #242424;
+      font-size: 13px;
+      margin-top: 45px;
+    }
+
+    @media (max-width: 700px) {
+      .content {
+        grid-template-columns: 1fr;
+      }
+
+      main {
+        margin-top: 30px;
+      }
+
+      .card {
+        padding: 23px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <!-- Coloque seu logo na mesma pasta deste arquivo, com o nome logo.png -->
+    <img
+      class="logo"
+      src="./logo.png"
+      alt="Logo JHONEFLIX"
+      onerror="this.style.display='none'"
+    >
+    <div class="brand">JHONEFLIX</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Seu entretenimento, <span>em um só lugar.</span></h1>
+      <p>
+        Assine o JHONEFLIX por 30 dias.<br>
+        Faça seu cadastro e siga as instruções para pagamento.
+      </p>
+    </section>
+
+    <section class="content">
+      <div class="card">
+        <h2>Plano mensal</h2>
+        <div class="price">R$ 20,00</div>
+        <div class="period">Acesso por 30 dias</div>
+
+        <ul class="features">
+          <li>Acesso pelo Emby</li>
+          <li>Plano válido por 30 dias</li>
+          <li>Renovação manual</li>
+          <li>Ativação após confirmação do pagamento</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Faça seu cadastro</h2>
+
+        <form id="formulario">
+          <label for="usuario">Nome de usuário desejado</label>
+          <input
+            id="usuario"
+            name="username"
+            type="text"
+            minlength="3"
+            maxlength="30"
+            pattern="[A-Za-z0-9_.-]+"
+            placeholder="Escolha seu usuário"
+            autocomplete="username"
+            required
+          >
+
+          <label for="email">Seu e-mail</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="voce@email.com"
+            autocomplete="email"
+            required
+          >
+
+          <button id="botao" type="submit">
+            CONTINUAR PARA PAGAMENTO
+          </button>
+        </form>
+
+        <div id="mensagem" role="status" aria-live="polite"></div>
+
+        <p class="notice">
+          O cadastro não confirma o pagamento nem ativa a conta
+          automaticamente. A ativação depende da confirmação segura
+          do pagamento pelo servidor.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="ano"></span> JHONEFLIX — Todos os direitos reservados.
+  </footer>
+
+  <script>
+    document.getElementById("ano").textContent =
+      new Date().getFullYear();
+
+    const formulario = document.getElementById("formulario");
+    const botao = document.getElementById("botao");
+    const mensagem = document.getElementById("mensagem");
+
+    formulario.addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      mensagem.style.display = "block";
+      mensagem.textContent = "";
+      botao.disabled = true;
+      botao.textContent = "AGUARDE...";
+
+      const dados = {
+        username: document.getElementById("usuario").value.trim(),
+        email: document.getElementById("email").value.trim()
+      };
+
+      try {
+        // Esta rota precisa existir no backend do seu servidor.
+        const resposta = await fetch("/api/payments/pix", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(dados)
+        });
+
+        const resultado = await resposta.json();
+
+        if (!resposta.ok) {
+          throw new Error(
+            resultado.message || "Não foi possível iniciar o pagamento."
+          );
+        }
+
+        if (resultado.checkout_url) {
+          window.location.href = resultado.checkout_url;
+        } else if (resultado.qr_code) {
+          mensagem.textContent =
+            "Pagamento iniciado. Código Pix: " + resultado.qr_code;
+        } else {
+          mensagem.textContent =
+            resultado.message ||
+            "Solicitação recebida. Siga as instruções do pagamento.";
+        }
+      } catch (erro) {
+        mensagem.textContent =
+          erro.message ||
+          "Não foi possível conectar ao servidor. Tente novamente.";
+      } finally {
+        botao.disabled = false;
+        botao.textContent = "CONTINUAR PARA PAGAMENTO";
+      }
+    });
+  </script>
+</body>
+</html>
+```
